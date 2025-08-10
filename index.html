@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HustleMap Quiz</title>
+<style>
+body { background-color: #0d0d0d; color: #39ff14; font-family: Arial, sans-serif; text-align: center; }
+.progress { width: 80%; background-color: #333; margin: 20px auto; height: 20px; border-radius: 10px; overflow: hidden; }
+.progress-bar { height: 100%; background-color: #39ff14; width: 0%; transition: width 0.3s; }
+button { background: #39ff14; color: #000; border: none; padding: 10px 20px; cursor: pointer; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h1>HustleMap Remote Income Profile Test</h1>
+<div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+<div id="quiz"></div>
+<button id="next-btn">Next</button>
+
+<script>
+const questions = Array.from({length: 20}, (_, i) => `Question ${i+1}: Choose an answer`);
+let current = 0;
+function renderQuestion() {
+  document.getElementById('quiz').innerHTML = `<h2>${questions[current]}</h2>`;
+  document.getElementById('progress-bar').style.width = ((current+1)/questions.length)*100 + '%';
+}
+document.getElementById('next-btn').addEventListener('click', () => {
+  current++;
+  if (current < questions.length) {
+    renderQuestion();
+  } else {
+    document.getElementById('quiz').innerHTML = '<h2>Paywall Page - Please Pay to See Results</h2>';
+    document.getElementById('next-btn').style.display = 'none';
+  }
+});
+renderQuestion();
+</script>
+
+</body>
+</html>
