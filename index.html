@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HustleMap — Remote Income Path</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Hustle<span>Map</span></div>
+    <div class="badges">
+      <div class="badge"><span class="star">★</span> 4.8 user rating</div>
+      <div class="badge">1,000+ joined today</div>
+      <div class="badge">Takes ~3 minutes</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Find your best <span class="remote">Remote</span><br/> income path</h1>
+    <p class="sub">Answer 2–4 minutes of questions and get a personalized plan to start earning online.</p>
+  </section>
+
+  <main id="app">
+    <section id="quizCard" class="card hidden">
+      <div class="segments" id="segments"></div>
+      <div class="qwrap">
+        <div id="qTitle" class="qtitle">Question</div>
+        <div id="options" class="options"></div>
+        <button id="nextBtn" type="button" class="btn next" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- Interstitial "Did you know" -->
+    <section id="interstitial" class="card hidden">
+      <div class="interior">
+        <h3>Did you know?</h3>
+        <p id="factText">Creators who post 3× per week grow 2–3× faster than those who post weekly.</p>
+        <button id="continueBtn" type="button" class="btn primary">Next</button>
+      </div>
+    </section>
+
+    <!-- Calculating screen -->
+    <section id="calcCard" class="card hidden">
+      <h2>Calculating your results…</h2>
+      <div class="calc-row">
+        <div class="calc-label">Analyzing your background</div>
+        <div class="bar"><div class="fill one" data-target="92"></div></div><div class="pct">0%</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Mapping your strengths</div>
+        <div class="bar"><div class="fill two" data-target="88"></div></div><div class="pct">0%</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Evaluating earning routes</div>
+        <div class="bar"><div class="fill three" data-target="76"></div></div><div class="pct">0%</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Preparing your 30‑day plan</div>
+        <div class="bar"><div class="fill four" data-target="100"></div></div><div class="pct">0%</div>
+      </div>
+    </section>
+
+    <!-- Paywall / Results unlock -->
+    <section id="paywall" class="card hidden">
+      <div class="segments done"></div>
+      <h2 id="resultsTitle"></h2>
+      <ul class="bullets" id="benefits">
+        <li>Step‑by‑step plan that shows exactly what to do to start earning online.</li>
+        <li>Plus a <b>creator bundle</b>: edit templates, caption hooks, and ready‑to‑use prompts.</li>
+      </ul>
+
+      <div class="pillrow">
+        <div class="pill">One‑time access</div>
+        <div class="pill price">€14.99</div>
+        <div class="pill">Instant</div>
+      </div>
+
+      <form id="unlockForm" class="unlock">
+        <label>Email for delivery</label>
+        <input id="email" type="email" placeholder="you@email.com" required />
+        <button id="unlockBtn" class="btn cta" type="submit">Unlock my Remote Income Path — €14.99</button>
+        <div class="micro">One‑time payment. Instant access. No subscription.<br>Includes your results + bonus bundle via email.</div>
+      </form>
+    </section>
+
+    <!-- Final screen after "payment" (demo) -->
+    <section id="final" class="card hidden">
+      <h2>Your plan is ready ✅</h2>
+      <p>Check your email for the full PDF + bonus bundle. Below is your quick start:</p>
+      <div id="quickStart" class="quick"></div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 HustleMap • Demo UI</footer>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
