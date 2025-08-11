@@ -153,3 +153,38 @@ blockquote{background:#0d2230; border:1px solid #143041; padding:16px; border-ra
 @media (min-width:768px){
   .hm-badge{ padding:10px 14px; font-size:15px; }
 }
+/* --- Badges fix: aliniere pe un rând, fără suprapuneri --- */
+.hm-hero{ padding-bottom: 8px; }
+
+.hm-badges{
+  width: calc(100% - 24px);
+  margin: 6px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+.hm-badge{
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  padding: 8px 10px;
+  border-radius:999px;
+  background: rgba(15,25,35,.78);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+  color:#cfe6ff;
+  font-size: clamp(12px, 3.4vw, 15px); /* micșorează pe ecrane mici */
+  white-space: nowrap;                /* nu rupe textul */
+  overflow: hidden; text-overflow: ellipsis;
+}
+
+/* un pic mai compact pe telefoane înguste */
+@media (max-width: 420px){
+  .hm-badge{ padding:6px 8px; gap:5px; }
+  .hm-badges{ gap:6px; }
+}
+
+/* dacă e EXTREM de îngust, a 3-a badge coboară sub primele 2 ca să nu se suprapună */
+@media (max-width: 340px){
+  .hm-badges{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .hm-badge:nth-child(3){ grid-column: 1 / -1; }
+}
