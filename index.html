@@ -1,194 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HustleMap — Quiz + Products</title>
-<style>
-:root{--bg:#0a0a0a;--fg:#eaffea;--muted:#a7d9a7;--card:#121212;--border:#202020;--brand:#39ff14;--brand2:#1dbf0f}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-.container{max-width:960px;margin:0 auto;padding:24px}
-.header,.footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-weight:900;font-size:22px}.brand .accent{color:var(--brand)}
-h1{font-size:34px;margin:.2em 0 .4em;line-height:1.2}
-.lead{color:var(--muted)}
-.card{border:1px solid var(--border);border-radius:16px;background:var(--card);padding:16px}
-.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--brand);color:#000;font-weight:700;border-radius:10px;padding:12px 18px;text-decoration:none;border:0;cursor:pointer;transition:.15s}
-.btn:hover{background:var(--brand2)}
-.progress{width:100%;height:10px;border-radius:999px;background:#1a1a1a;overflow:hidden;border:1px solid #222;margin:12px 0}
-.progress>div{height:100%;background:var(--brand);transition:width .2s ease}
-.options{display:grid;gap:10px;margin:12px 0}
-.option{padding:14px 16px;border-radius:12px;border:1px solid #222;background:#151515;text-align:left;color:#d8ffd8}
-.option:hover{border-color:var(--brand)}
-.option.active{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand) inset;background:#112411}
-.actions{display:flex;justify-content:space-between;gap:10px}
-.small{font-size:12px;color:#9ad69a}
-.grid{display:grid;gap:12px}
-.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:860px){.grid-2{grid-template-columns:1fr}}
-.hidden{display:none}
-</style>
-</head>
-<body>
-<div class="container">
-  <div class="header"><div class="brand"><span class="accent">Hustle</span>Map</div></div>
-
-  <!-- Quiz -->
-  <main id="quizWrap">
-    <h1>Find your most profitable <span style="color:#39ff14">Remote Income</span> path</h1>
-    <p class="lead">5-minute quiz → 2–3 best paths → 30-day plan. Rezultatul și pachetele apar sub quiz.</p>
-
-    <div class="card">
-      <div class="small">Question <span id="idx">1</span>/<span id="total">20</span></div>
-      <div class="progress"><div id="bar" style="width:0%"></div></div>
-      <h2 id="q" style="margin:.4em 0">…</h2>
-      <div id="opts" class="options"></div>
-      <div class="actions">
-        <button id="prev" class="btn" style="background:#2a2a2a;color:#fff">Back</button>
-        <button id="next" class="btn">Next</button>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HustleMap – Remote Income Profile Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="questions.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1>Find your best <span class="accent">remote income path</span></h1>
+        <p class="sub">Answer 2–4 minutes of questions and get a personalized plan to start earning online.</p>
+        <button class="btn btn--primary" id="startBtn">Start quiz</button>
+        <div class="hero__badges">
+          <div class="badge">4.8 ★ user rating</div>
+          <div class="badge">1,000+ joined today</div>
+          <div class="badge">Takes ~3 minutes</div>
+        </div>
       </div>
-      <div class="small" id="hint"></div>
-    </div>
-  </main>
+    </header>
 
-  <!-- Result -->
-  <section id="result" class="hidden" style="margin-top:18px">
-    <h2>Your HustleMap Result</h2>
-    <div class="card">
-      <div class="small">Estimated score: <b id="score">0</b></div>
-      <div id="profiles" class="grid" style="margin-top:10px"></div>
-    </div>
-  </section>
+    <main id="app" class="app">
+      <!-- Quiz UI renders here -->
+      <section id="quiz" class="card quiz hidden"></section>
 
-  <!-- Products under the quiz/result -->
-  <section id="packages" class="hidden" style="margin-top:18px">
-    <h2>Recommended packages</h2>
-    <div id="packList" class="grid grid-2"></div>
-  </section>
+      <!-- Calculation / progress section -->
+      <section id="calculating" class="card calc hidden">
+        <h2>Calculating your results…</h2>
+        <div class="meter">
+          <div class="label">Analyzing your experience <span class="value">0%</span></div>
+          <div class="bar"><span style="--p:0"></span></div>
+        </div>
+        <div class="meter">
+          <div class="label">Matching to remote models <span class="value">0%</span></div>
+          <div class="bar"><span style="--p:0"></span></div>
+        </div>
+        <div class="meter">
+          <div class="label">Estimating income potential <span class="value">0%</span></div>
+          <div class="bar"><span style="--p:0"></span></div>
+        </div>
+        <div class="meter">
+          <div class="label">Preparing statistics & next steps <span class="value">0%</span></div>
+          <div class="bar"><span style="--p:0"></span></div>
+        </div>
 
-  <div class="footer"><span class="small">© <span id="y"></span> HustleMap</span></div>
-</div>
+        <blockquote class="testimonial">
+          <div class="stars">★★★★★ <span>5.0</span></div>
+          <p>“HustleMap helped me pick a focus and launch my first offer in two weeks.”</p>
+          <footer>Sam, 27, London</footer>
+        </blockquote>
+      </section>
 
-<script>
-// ---------- Data ----------
-const QUESTIONS=[ // 20 întrebări
- {q:"Current digital skills?", o:["None","Beginner","Intermediate","Advanced","Expert"], p:[0,1,2,3,4]},
- {q:"Preferred work type?", o:["Creative","Analytical","Practical","Social"], p:[3,2,1,3]},
- {q:"Comfort on camera?", o:["Not at all","Slightly","Neutral","Comfortable","Very comfortable"], p:[0,1,2,3,4]},
- {q:"Work style?", o:["Only alone","Mostly alone","Mixed","Mostly with people","Only with people"], p:[2,3,2,3,4]},
- {q:"Sold online before?", o:["No","Once","A few times","Consistently"], p:[0,1,2,3]},
- {q:"Following a plan?", o:["Strict plan","Mostly plan","Flexible","Spontaneous","Very spontaneous"], p:[4,3,2,1,0]},
- {q:"Learning new skills fast?", o:["I freeze","Need time","I adapt","Immediately"], p:[0,1,3,4]},
- {q:"Main motivation?", o:["Time freedom","Extra income","Financial independence","Career change"], p:[3,2,4,2]},
- {q:"Tight deadlines?", o:["Very hard","Hard","Okay","Good","Great"], p:[0,1,2,3,4]},
- {q:"Time management?", o:["Not at all","A little","Average","Good","Excellent"], p:[0,1,2,3,4]},
- {q:"Daily time available?", o:["<30m","30–60m","1–2h","3–4h",">4h"], p:[0,1,2,3,4]},
- {q:"Monthly budget?", o:["None","<£50","£50–100","£100–300",">£300"], p:[0,1,2,3,4]},
- {q:"Equipment owned?", o:["Laptop","Phone (good camera)","Mic/audio","Nothing special"], p:[3,3,2,1]},
- {q:"English level?", o:["None","Beginner","Intermediate","Advanced","Fluent"], p:[0,1,2,3,4]},
- {q:"Audience size?", o:["None","<500","500–2k","2k–10k",">10k"], p:[0,1,2,3,4]},
- {q:"How fast for results?", o:["1 month","1–3 months","3–6 months","Long term"], p:[4,3,2,1]},
- {q:"Try several methods?", o:["No","Maybe","Yes"], p:[0,2,4]},
- {q:"Sales attitude?", o:["Avoid","Can try","Comfortable","I like it"], p:[0,2,3,4]},
- {q:"If a project fails…", o:["Quit","Try small changes","Analyze & change strategy"], p:[0,2,4]},
- {q:"Target income in 12 months?", o:["<£500","£500–1k","£1k–3k","£3k–5k",">£5k"], p:[0,1,2,3,4]}
-];
-const PROFILES={
- 'creative-freelancer':{
-   title:'Creative Freelancer',
-   summary:'Editing, social media & copy cu AI. Client-demand heavy, start rapid.',
-   why:['Ai timp zilnic să livrezi','Confort cu deadline-uri','Engleză ok + echipament minim'],
-   plan:['W1: 3 sample-uri (video/text/design)','W2: 20 outreach mesaje','W3: optimizează oferta + 1 UGC demo','W4: primul client + 2 mini case studies']
- },
- 'ai-automator':{
-   title:'AI Services & Automations',
-   summary:'Setezi workflows GPT și no-code pentru SMB-uri.',
-   why:['Te adaptezi la tool-uri','Îți place planul structurat','Țintă >£3k/mo'],
-   plan:['W1: 1 tool (Make/Zapier)','W2: 2 demo-automations','W3: pitch 15 business-uri','W4: retainer lunar']
- },
- 'ugc-creator':{
-   title:'UGC Creator',
-   summary:'Short-form pt. branduri, fără să fii influencer full-time.',
-   why:['Moderată prezență on camera','Telefon cu cameră bună','Vrei flexibilitate'],
-   plan:['W1: 3 UGC samples','W2: pitch 20 branduri','W3: iterează hook-uri','W4: pachet UGC plătit']
- }
-};
-const PACKAGES=[ // pachetele de sub quiz
- {title:'50 ChatGPT Prompts', desc:'Outreach, oferte, conținut.', price:'£7.99', url:'#'},
- {title:'3 TikTok/UGC Scripts', desc:'Hook-uri filmabile acasă.', price:'£4.99', url:'#'},
- {title:'30-Day Starter Plan (PDF)', desc:'Plan zilnic + checklist.', price:'£9.99', url:'#'},
- {title:'Offer & DM Swipe-File', desc:'Mesaje testate + cadre.', price:'£5.99', url:'#'}
-];
+      <!-- Paywall / plan screen -->
+      <section id="paywall" class="card pay hidden">
+        <div class="ribbon">
+          7‑day Trial offer expires in <span id="countdown">15:00</span>
+        </div>
+        <h2>Your personalized Remote Income Plan is ready</h2>
+        <canvas id="trendChart" width="600" height="220" aria-label="Progress chart"></canvas>
+        <ul class="benefits">
+          <li>Detailed test results</li>
+          <li>Actionable 30‑day plan</li>
+          <li>Tool stack & learning path</li>
+          <li>Community & accountability</li>
+        </ul>
 
-// ---------- Quiz logic ----------
-let step=0, answers=new Array(QUESTIONS.length).fill(-1);
-const totalEl=document.getElementById('total'); totalEl.textContent=QUESTIONS.length;
-const idxEl=document.getElementById('idx'), bar=document.getElementById('bar');
-const qEl=document.getElementById('q'), optsEl=document.getElementById('opts'), hint=document.getElementById('hint');
-const prevBtn=document.getElementById('prev'), nextBtn=document.getElementById('next');
+        <div class="plans">
+          <button class="plan selected" data-price="1">
+            <strong>€1</strong><span>Trial • 7 days</span>
+          </button>
+          <button class="plan" data-price="10">
+            <strong>€10</strong><span>Support the project</span>
+          </button>
+          <button class="plan" data-price="29.99">
+            <strong>€29.99</strong><span>After trial / month</span>
+          </button>
+        </div>
 
-function render(){
-  const q=QUESTIONS[step];
-  idxEl.textContent=step+1;
-  qEl.textContent=q.q;
-  optsEl.innerHTML='';
-  q.o.forEach((label,i)=>{
-    const b=document.createElement('button');
-    b.className='option'+(answers[step]===i?' active':'');
-    b.textContent=label;
-    b.onclick=()=>{answers[step]=i; render();};
-    optsEl.appendChild(b);
-  });
-  bar.style.width=((step)/QUESTIONS.length*100)+'%';
-  prevBtn.disabled = (step===0);
-  nextBtn.textContent = (step===QUESTIONS.length-1)?'Finish':'Next';
-  hint.textContent = (answers[step]===-1)?'Selectează o opțiune pentru a continua':'';
-}
-prevBtn.onclick=()=>{ if(step>0){ step--; render(); } };
-nextBtn.onclick=()=>{
-  if(answers[step]===-1) return;
-  if(step<QUESTIONS.length-1){ step++; render(); }
-  else{
-    const score=answers.reduce((s,ans,i)=>s+(QUESTIONS[i].p[ans]||0),0);
-    showResult(score);
-  }
-};
-function chooseProfiles(score){
-  if(score>=60) return ['ai-automator','creative-freelancer','ugc-creator'];
-  if(score>=40) return ['creative-freelancer','ugc-creator','ai-automator'];
-  return ['ugc-creator','creative-freelancer','ai-automator'];
-}
-function showResult(score){
-  document.getElementById('score').textContent=score;
-  const keys=chooseProfiles(score);
-  const wrap=document.getElementById('profiles'); wrap.innerHTML='';
-  keys.forEach(k=>{
-    const p=PROFILES[k];
-    const div=document.createElement('div');
-    div.className='card';
-    div.innerHTML=`<b>${p.title}</b><div class="small">${p.summary}</div>
-      <div style="margin-top:8px"><b>Why this fits:</b><ul>${p.why.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-      <div style="margin-top:8px"><b>30-day plan:</b><ol>${p.plan.map(x=>`<li>${x}</li>`).join('')}</ol></div>`;
-    wrap.appendChild(div);
-  });
-  // products
-  const pl=document.getElementById('packList'); pl.innerHTML='';
-  PACKAGES.forEach(p=>{
-    const item=document.createElement('div'); item.className='card';
-    item.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div><div style="font-weight:700">${p.title}</div><div class="small">${p.desc}</div></div>
-      <a class="btn" href="${p.url}" target="_blank">Buy ${p.price}</a>
-    </div>`;
-    pl.appendChild(item);
-  });
+        <div class="pay-methods">
+          <h3>Payment method</h3>
+          <label><input type="radio" name="pm" checked> Apple Pay</label>
+          <label><input type="radio" name="pm"> PayPal</label>
+          <label><input type="radio" name="pm"> Credit Card</label>
+        </div>
+        <a id="buyBtn" class="btn btn--primary btn--wide" href="#" target="_blank" rel="noopener">Get my result & plan</a>
+        <p class="fineprint">No charges if you cancel during the trial. Cancel anytime.</p>
+      </section>
+    </main>
 
-  // reveal sections under quiz
-  document.getElementById('result').classList.remove('hidden');
-  document.getElementById('packages').classList.remove('hidden');
-  // scroll to results
-  document.getElementById('result').scrollIntoView({behavior:'smooth'});
-}
-document.getElementById('y').textContent=new Date().getFullYear();
-render();
-</script>
-</body>
+    <footer class="footer">
+      <p>© <span id="y"></span> HustleMap • Demo UI template. Replace copy & images with your own.</p>
+    </footer>
+  </body>
 </html>
