@@ -146,3 +146,13 @@ function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
+// mini-animatie 1,000 -> 1,005
+const joinedEl = document.getElementById('hmJoinedCount');
+if (joinedEl) {
+  let n = 1000, target = 1005;
+  const t = setInterval(() => {
+    n++;
+    joinedEl.textContent = n.toLocaleString();
+    if (n >= target) clearInterval(t);
+  }, 800);
+}
