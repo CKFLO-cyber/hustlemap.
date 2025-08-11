@@ -216,3 +216,20 @@ blockquote{background:#0d2230; border:1px solid #143041; padding:16px; border-ra
 @media (max-width:340px){
   .hm-badges{ grid-template-columns: 1fr; }
 }
+/* Bigger NEXT button (mobile-friendly) */
+#nextBtn {
+  font-size: 18px;           /* +2px */
+  padding: 18px 28px;        /* mai multă zonă de tap */
+  min-height: 56px;          /* țintă tactilă comfort */
+  border-radius: 16px;       /* păstrăm stilul rotunjit */
+  width: 100%;               /* se întinde frumos pe lățime */
+}
+
+/* pe ecrane mari îl ținem puțin mai “cuminte” */
+@media (min-width: 768px) {
+  #nextBtn {
+    font-size: 17px;
+    padding: 16px 24px;
+    min-height: 52px;
+  }
+}
