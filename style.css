@@ -233,3 +233,11 @@ blockquote{background:#0d2230; border:1px solid #143041; padding:16px; border-ra
     min-height: 52px;
   }
 }
+document.addEventListener('click', (e)=>{
+  const h = e.target.closest('.acc-h');
+  if(!h) return;
+  h.classList.toggle('active');
+  const b = h.nextElementSibling;
+  if(!b) return;
+  b.style.display = (b.style.display === 'block' ? 'none' : 'block');
+});
