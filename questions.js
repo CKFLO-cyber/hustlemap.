@@ -1,23 +1,32 @@
-// 20 questions (demo). You can freely edit text/options.
+
+// 20 questions; age buckets simplified
 const QUESTIONS = [
-  { title: "Choose your age", options: ["18–21","22–25","26–30","31–35","36–40","41–45","46–50","51–55","56–60","61–65","66–70","71+"]},
-  { title: "Preferred work style", options: ["Solo & flexible","I like clients","Small team","Structured & scheduled"]},
-  { title: "How many hours/day can you focus deeply?", options: ["<2h","2–4h","4–6h",">6h"]},
-  { title: "Your strongest asset", options: ["Writing","Design/Creative","Sales & Persuasion","Analytics/Tech"]},
-  { title: "Comfort on camera (video/social)", options: ["Love it","Okay","Hesitant","Nope"]},
-  { title: "Budget you can invest monthly (first 3 months)", options: ["$0–50","$50–200","$200–500",">$500"]},
-  { title: "Risk tolerance", options: ["Very low","Moderate","High"]},
-  { title: "Which appeals most?", options: ["Productized services","Affiliate marketing","Digital products","Freelance gigs"]},
-  { title: "Your current audience size", options: ["None","<1k","1k–10k",">10k"]},
-  { title: "Email/DM outreach comfort", options: ["High","Medium","Low"]},
-  { title: "Do you enjoy long-term projects?", options: ["Yes","Sometimes","No"]},
-  { title: "Preferred learning style", options: ["Hands-on","Courses & books","Coaching","Wing it"]},
-  { title: "Primary goal for next 90 days", options: ["$500/mo","$1k/mo","$3k+/mo","Portfolio & skills"]},
-  { title: "Choose a platform to start", options: ["TikTok","YouTube","LinkedIn","Blog/SEO"]},
-  { title: "Would you sell your own product?", options: ["Yes","Maybe","No"]},
-  { title: "Cold calling?", options: ["Comfortable","Only warm leads","Prefer no"]},
-  { title: "Tech comfort (automation, tools)", options: ["Ninja","Intermediate","Beginner"]},
-  { title: "Are you consistent daily?", options: ["Yes","Working on it","Struggle"]},
-  { title: "Time zone flexibility with clients", options: ["Any","±3h","Local only"]},
-  { title: "Pick your pace", options: ["Fast launch","Test & iterate","Slow & steady"]}
+  { id: 1,  title: "Choose your age", options: ["18–25","26–35","36–49","50+"] },
+  { id: 2,  title: "Experience selling online?", options: ["None","Some attempts","Consistent sales"] },
+  { id: 3,  title: "Preferred work style", options: ["Solo & flexible","I like clients","Small team","I like managing people"] },
+  { id: 4,  title: "Time available per day", options: ["<1 hour","1–2 hours","3–4 hours","5+ hours"] },
+  { id: 5,  title: "Budget to start", options: ["$0–$50","$50–$200","$200–$1000","$1000+"] },
+  { id: 6,  title: "Pick your strengths", options: ["Writing","Design/Video","Tech/Automation","Sales/Negotiation"] },
+  { id: 7,  title: "Comfort on camera?", options: ["Yes","Prefer voice/screen","No"] },
+  { id: 8,  title: "You prefer…", options: ["Quick flips","Recurring income","Building brand long-term"] },
+  { id: 9,  title: "Risk tolerance", options: ["Low","Medium","High"] },
+  { id: 10, title: "Niche interest", options: ["Fitness","Finance","Beauty","Gaming","Tech","Other"] },
+  { id: 11, title: "Writing comfort", options: ["Short posts","Long articles","I prefer video"] },
+  { id: 12, title: "Technical skills", options: ["Beginner","Intermediate","Advanced"] },
+  { id: 13, title: "Email list?", options: ["No","Yes <1k","Yes >1k"] },
+  { id: 14, title: "Social following", options: ["None","<5k","5k–50k","50k+"] },
+  { id: 15, title: "Ad spend comfort", options: ["No ads","Small tests","Confident scaling"] },
+  { id: 16, title: "Preferred product type", options: ["Digital","Services","Physical","Affiliate"] },
+  { id: 17, title: "Client communication", options: ["DMs only","Calls ok","I avoid calls"] },
+  { id: 18, title: "Team tools", options: ["Notion","Trello","Asana","ClickUp"] },
+  { id: 19, title: "Learning pace", options: ["Fast & messy","Slow & steady","Follow a system"] },
+  { id: 20, title: "Revenue target in 90 days", options: ["$500","$1k","$2–5k","$5k+"] }
+];
+
+// Interstitial copy
+const DID_YOU_KNOW = [
+  "Creators who publish consistently build trust faster than those who post in bursts. A simple 3–5 posts/week cadence beats perfection every time.",
+  "Your first €1,000 online usually comes from a skill you already have—just packaged better. That's why we start with skills, not platforms.",
+  "Email lists convert several times better than social DMs. We'll add a one-page lead magnet + welcome sequence to your plan.",
+  "Short-form videos can be repurposed into carousels, emails, and scripts in minutes. You'll get a repeatable 1→5 repurpose routine."
 ];
