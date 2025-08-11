@@ -116,4 +116,40 @@ blockquote{background:#0d2230; border:1px solid #143041; padding:16px; border-ra
 
 @media (max-width:520px){
   .calc-row .label{width:160px}
+} 
+/* === HERO HEADER (centered) === */
+.hm-hero{
+  display:flex; flex-direction:column; align-items:center;
+  gap:10px; padding:18px 16px 6px; text-align:center;
+}
+
+/* Brand cu două nuanțe (Hustle / Map) */
+.hm-brand{
+  margin:0; font-weight:800; letter-spacing:-0.02em;
+  font-size:clamp(28px,7vw,40px); line-height:1.05;
+}
+.hm-brand span:nth-child(1){
+  background:linear-gradient(180deg,#69e39f 0%, #59edc3 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hm-brand span:nth-child(2){
+  background:linear-gradient(180deg,#7db5ff 0%, #9ac3ff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* Badge-urile pe un singur rând, întinse stânga→dreapta */
+.hm-badges{
+  margin-top:4px;
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:10px; width:100%; max-width:900px;
+}
+.hm-badge{
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  padding:8px 10px; border-radius:999px;
+  background:rgba(15,25,35,.75);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+  color:#cfe6ff; font-size:14px; white-space:nowrap;
+}
+@media (min-width:768px){
+  .hm-badge{ padding:10px 14px; font-size:15px; }
 }
