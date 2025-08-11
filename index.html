@@ -9,7 +9,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<!-- DID-YOU-KNOW MODAL -->
+<div id="factModal" class="modal hidden" aria-hidden="true">
+  <div class="modal__backdrop"></div>
+  <div class="modal__card">
+    <div class="modal__icon">🌱</div>
+    <h3 class="modal__title">Did you know?</h3>
+    <p id="factText" class="modal__text"></p>
+
+    <div id="factActions" class="modal__actions">
+      <button id="factYes" class="btn yes hidden">Yes</button>
+      <button id="factNo"  class="btn ghost hidden">No</button>
+      <button id="factNext" class="btn">Next</button>
+    </div>
+  </div>
+</div>
+  <body>
   <!-- Centered brand + badges -->
   <header class="hm-hero">
     <h1 class="hm-brand"><span>Hustle</span><span>Map</span></h1>
