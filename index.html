@@ -1,101 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HustleMap – Remote Income Profile Test</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="questions.js"></script>
-    <script defer src="app.js"></script>
-  </head>
-  <body>
-    <header class="hero">
-      <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <h1>Find your best <span class="accent">remote income path</span></h1>
-        <p class="sub">Answer 2–4 minutes of questions and get a personalized plan to start earning online.</p>
-        <button class="btn btn--primary" id="startBtn">Start quiz</button>
-        <div class="hero__badges">
-          <div class="badge">4.8 ★ user rating</div>
-          <div class="badge">1,000+ joined today</div>
-          <div class="badge">Takes ~3 minutes</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HutlerMap – Remote Income Profile Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo-left">Hutler</span><span class="logo-right">Map</span>
+    </div>
+    <div class="stats">
+      <span class="pill">⭐ 4.8 user rating</span>
+      <span class="pill">1,000+ joined today</span>
+      <span class="pill">Takes ~3 minutes</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Find your best remote income stream</h1>
+      <p class="sub">Answer 20 quick questions to reveal your top online earning paths.</p>
+      <button id="startBtn" class="cta">Start quiz</button>
+    </section>
+
+    <section id="quiz" class="quiz hidden">
+      <div class="progress">
+        <div class="segment">
+          <div class="fill" id="seg1"></div>
+        </div>
+        <div class="segment">
+          <div class="fill" id="seg2"></div>
+        </div>
+        <div class="segment">
+          <div class="fill" id="seg3"></div>
+        </div>
+        <div class="segment">
+          <div class="fill" id="seg4"></div>
         </div>
       </div>
-    </header>
 
-    <main id="app" class="app">
-      <!-- Quiz UI renders here -->
-      <section id="quiz" class="card quiz hidden"></section>
+      <div class="card">
+        <div id="qBadge" class="q-badge">Question <span id="qNum">1</span>/20</div>
+        <h2 id="qTitle" class="q-title">Loading…</h2>
+        <div id="options" class="options"></div>
+        <button id="nextBtn" class="cta next" disabled>Next</button>
+      </div>
+    </section>
+  </main>
 
-      <!-- Calculation / progress section -->
-      <section id="calculating" class="card calc hidden">
-        <h2>Calculating your results…</h2>
-        <div class="meter">
-          <div class="label">Analyzing your experience <span class="value">0%</span></div>
-          <div class="bar"><span style="--p:0"></span></div>
-        </div>
-        <div class="meter">
-          <div class="label">Matching to remote models <span class="value">0%</span></div>
-          <div class="bar"><span style="--p:0"></span></div>
-        </div>
-        <div class="meter">
-          <div class="label">Estimating income potential <span class="value">0%</span></div>
-          <div class="bar"><span style="--p:0"></span></div>
-        </div>
-        <div class="meter">
-          <div class="label">Preparing statistics & next steps <span class="value">0%</span></div>
-          <div class="bar"><span style="--p:0"></span></div>
-        </div>
+  <footer class="footer">
+    <p>© <span id="y"></span> HutlerMap • Demo UI template. Replace copy & images with your own.</p>
+  </footer>
 
-        <blockquote class="testimonial">
-          <div class="stars">★★★★★ <span>5.0</span></div>
-          <p>“HustleMap helped me pick a focus and launch my first offer in two weeks.”</p>
-          <footer>Sam, 27, London</footer>
-        </blockquote>
-      </section>
-
-      <!-- Paywall / plan screen -->
-      <section id="paywall" class="card pay hidden">
-        <div class="ribbon">
-          7‑day Trial offer expires in <span id="countdown">15:00</span>
-        </div>
-        <h2>Your personalized Remote Income Plan is ready</h2>
-        <canvas id="trendChart" width="600" height="220" aria-label="Progress chart"></canvas>
-        <ul class="benefits">
-          <li>Detailed test results</li>
-          <li>Actionable 30‑day plan</li>
-          <li>Tool stack & learning path</li>
-          <li>Community & accountability</li>
-        </ul>
-
-        <div class="plans">
-          <button class="plan selected" data-price="1">
-            <strong>€1</strong><span>Trial • 7 days</span>
-          </button>
-          <button class="plan" data-price="10">
-            <strong>€10</strong><span>Support the project</span>
-          </button>
-          <button class="plan" data-price="29.99">
-            <strong>€29.99</strong><span>After trial / month</span>
-          </button>
-        </div>
-
-        <div class="pay-methods">
-          <h3>Payment method</h3>
-          <label><input type="radio" name="pm" checked> Apple Pay</label>
-          <label><input type="radio" name="pm"> PayPal</label>
-          <label><input type="radio" name="pm"> Credit Card</label>
-        </div>
-        <a id="buyBtn" class="btn btn--primary btn--wide" href="#" target="_blank" rel="noopener">Get my result & plan</a>
-        <p class="fineprint">No charges if you cancel during the trial. Cancel anytime.</p>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© <span id="y"></span> HustleMap • Demo UI template. Replace copy & images with your own.</p>
-    </footer>
-  </body>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
