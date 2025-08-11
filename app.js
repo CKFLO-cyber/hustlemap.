@@ -146,10 +146,10 @@ function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
-// mini-animatie 1,000 -> 1,005
+// mini-animatie 1,000 -> 1,024
 const joinedEl = document.getElementById('hmJoinedCount');
 if (joinedEl) {
-  let n = 1000, target = 1005;
+  let n = 1000, target = 1024;
   const t = setInterval(() => {
     n++;
     joinedEl.textContent = n.toLocaleString();
