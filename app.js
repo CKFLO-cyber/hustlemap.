@@ -146,13 +146,37 @@ function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
-// mini-animatie 1,000 -> 1,024
-const joinedEl = document.getElementById('hmJoinedCount');
-if (joinedEl) {
-  let n = 1000, target = 1024;
-  const t = setInterval(() => {
-    n++;
-    joinedEl.textContent = n.toLocaleString();
-    if (n >= target) clearInterval(t);
-  }, 800);
-}
+// === Joined today counter (random jumps every 3s) ===
+(function () {
+  const el = document.getElementById('hmJoinedCount');
+  if (!el) return;
+
+  // Setează formatul dorit: 'ro-RO' => 1.004  |  'en-US' => 1,004
+  const LOCALE = 'ro-RO';
+
+  const START = 1000;     // punctul de start
+  const CAP   = 1120;     // limită soft (când ajunge aici, îl resetăm ca să nu urce absurd)
+  const STEP_MIN = 2;     // creștere minimă per tick
+  const STEP_MAX = 9;     // creștere maximă per tick
+  const TICK_MS  = 3000;  // la fiecare 3 secunde
+
+  let value = START;
+  const fmt = n => n.toLocaleString(LOCALE);
+
+  // text inițial
+  el.textContent = fmt(value);
+
+  setInterval(() => {
+    // pas random (ex: 2..9) => 1000 → 1004 → 1006 → 1009 → 1017...
+    const step = Math.floor(Math.random() * (STEP_MAX - STEP_MIN + 1)) + STEP_MIN;
+    value += step;
+
+    // dacă depășim plafonul, revenim aproape de START ca să pară plauzibil
+    if (value >= CAP) {
+      const backoff = Math.floor(Math.random() * 5); // 0..4
+      value = START + backoff;
+    }
+
+    el.textContent = fmt(value);
+  }, TICK_MS);
+})();
