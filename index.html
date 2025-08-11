@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HustleMap — Remote Income Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <span class="brand--h">Hustle</span><span class="brand--m">Map</span>
+      </div>
+      <div class="badges">
+        <span class="pill">⭐ 4.8 user rating</span>
+        <span class="pill">1,000+ joined today</span>
+        <span class="pill">Takes ~3 minutes</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero__title">
+        Find your best <span class="gradient">Remote</span><br/> income path
+      </h1>
+      <p class="hero__sub">Answer 2–4 minutes of questions and get a personalized plan to start earning online.</p>
+    </section>
+
+    <!-- QUIZ CARD -->
+    <section id="quiz-card" class="card">
+      <div class="progress4" id="progress4">
+        <div class="seg">
+          <div class="fill" style="--p:0%"></div>
+        </div>
+        <div class="seg"><div class="fill" style="--p:0%"></div></div>
+        <div class="seg"><div class="fill" style="--p:0%"></div></div>
+        <div class="seg"><div class="fill" style="--p:0%"></div></div>
+      </div>
+
+      <div id="question-wrap"></div>
+
+      <div class="actions">
+        <button id="nextBtn" class="btn" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="card hidden">
+      <h2>Calculating your results...</h2>
+      <div id="calc-bars" class="calc-bars"></div>
+      <div class="testimonials">
+        <blockquote>
+          <div class="stars">★★★★★ <span>5.0</span></div>
+          <p>“HustleMap gave me clarity and a step-by-step plan. Two weeks later I landed my first paying client.”</p>
+          <footer>Alex, 27, Berlin</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- PAYWALL -->
+    <section id="paywall" class="card hidden">
+      <h2>Flo, your personalized plan is ready</h2>
+      <ul class="features">
+        <li>Your top 3 Remote income paths (fit, difficulty, income ceiling)</li>
+        <li>Pricing & offer suggestions to sell today</li>
+        <li>30‑day step‑by‑step plan (daily 30‑minute actions)</li>
+        <li>Creator prompts pack (hooks, scripts, emails)</li>
+        <li>Repurpose checklist (1 post → 5 formats)</li>
+      </ul>
+
+      <div class="pay-grid">
+        <span class="pill ghost">One‑time access</span>
+        <span class="pill ghost price">€14.99</span>
+        <span class="pill ghost">Instant</span>
+      </div>
+
+      <div class="email-row">
+        <input id="emailInput" class="input" type="email" placeholder="Enter your email to receive the bundle" />
+      </div>
+
+      <button id="payBtn" class="btn big">Unlock my Remote Income Path — €14.99</button>
+      <p class="smallprint">One-time payment. Instant access. No subscription.<br/>Includes your results + bonus bundle via email.</p>
+    </section>
+
+    <footer class="footer container">
+      <p>© 2025 HustleMap • Demo UI.</p>
+    </footer>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
