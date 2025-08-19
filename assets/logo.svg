@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 180 40">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="0">
+      <stop stop-color="#2af598"/>
+      <stop offset="1" stop-color="#22e4b8"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="1" y1="0" y2="0">
+      <stop stop-color="#7ec6ff"/>
+      <stop offset="1" stop-color="#71a8ff"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="28" font-size="28" font-family="Inter, Arial" font-weight="800" fill="url(#g1)">Hustle</text>
+  <text x="95" y="28" font-size="28" font-family="Inter, Arial" font-weight="800" fill="url(#g2)">Map</text>
+</svg>
