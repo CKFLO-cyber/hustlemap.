@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use - HustleMap</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=21" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="legal-header">
+        <div class="container">
+            <a href="/" class="logo">HustleMap</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="legal-content">
+        <div class="container">
+            <h1>HustleMap — Terms of Use</h1>
+            <p class="last-updated">Last updated: December 19, 2024</p>
+            
+            <div class="legal-text">
+                <h2>1. Agreement</h2>
+                <p>By accessing HustleMap, you agree to these Terms and our Privacy, Refund, Cookie Policies and Disclaimer.</p>
+
+                <h2>2. What we provide</h2>
+                <p>HustleMap offers a one-time purchase that unlocks a personalized plan and digital materials. This is educational guidance—not financial advice—and results vary.</p>
+
+                <h2>3. Eligibility</h2>
+                <p>You must be 18+ to use/purchase.</p>
+
+                <h2>4. License</h2>
+                <p>After purchase, you get a personal, non-transferable license to view and use the materials. You may not redistribute, resell, upload, or share them publicly.</p>
+
+                <h2>5. Payments</h2>
+                <p>Payments are processed by Stripe. We never store card numbers. Pricing and taxes are shown at checkout.</p>
+
+                <h2>6. Refunds</h2>
+                <p>See the Refund Policy. In short: because the product is digital, all sales are final once access has been delivered.</p>
+
+                <h2>7. Acceptable use</h2>
+                <p>No scraping, reverse engineering, automated harvesting, or use that violates laws or third-party rights.</p>
+
+                <h2>8. Results & no guarantees</h2>
+                <p>We do not guarantee specific earnings or outcomes. You are responsible for your decisions and compliance.</p>
+
+                <h2>9. Intellectual property</h2>
+                <p>All content, branding, and code are owned by HustleMap. All rights reserved.</p>
+
+                <h2>10. Changes</h2>
+                <p>We may update these Terms; material changes will be posted with a new "Last updated" date.</p>
+
+                <h2>11. Limitation of liability</h2>
+                <p>To the maximum extent permitted by law, HustleMap is not liable for indirect, incidental, or consequential damages.</p>
+
+                <h2>12. Governing law</h2>
+                <p>These Terms are governed by Romanian law. Courts in Romania have exclusive jurisdiction, unless consumer law in your country gives you mandatory rights.</p>
+
+                <h2>Contact</h2>
+                <p>Email: <a href="mailto:support@hustlemap.net">support@hustlemap.net</a></p>
+            </div>
+
+            <div class="back-link">
+                <a href="#" onclick="goBack(); return false;">← Back to home</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-footer">
+        <div class="container">
+            <p>&copy; 2025 HustleMap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function goBack() {
+            // If visitor came from our site, use browser back; otherwise go to tickets section
+            if (document.referrer && document.referrer.includes(window.location.origin)) {
+                history.back();
+            } else {
+                location.href = 'index.html#paywall';
+            }
+        }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - HustleMap</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=21" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="legal-header">
+        <div class="container">
+            <a href="/" class="logo">HustleMap</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="legal-content">
+        <div class="container">
+            <h1>HustleMap — Refund Policy</h1>
+            <p class="last-updated">Last updated: December 19, 2024</p>
+            
+            <div class="legal-text">
+                <h2>Digital goods — all sales final once accessed</h2>
+                <p>Because our product is a personalized digital plan delivered instantly, refunds are not available once access has been granted or materials have been viewed/downloaded.</p>
+
+                <h2>We will refund if:</h2>
+                <ol>
+                    <li>You were charged twice for the same purchase (duplicate payment), or</li>
+                    <li>A technical issue on our side prevents access and we can't fix it within 48 hours of your support request.</li>
+                </ol>
+
+                <h2>How to request</h2>
+                <p>Email <a href="mailto:support@hustlemap.net">support@hustlemap.net</a> within 14 days of purchase. Include: order email, payment date, last 4 digits of the card, and a brief description. We respond within 2 business days.</p>
+
+                <h2>Chargebacks</h2>
+                <p>Please contact us first—we'll help quickly. Unauthorized or fraudulent transactions will be investigated and contested where appropriate.</p>
+            </div>
+
+            <div class="back-link">
+                <a href="#" onclick="goBack(); return false;">← Back to home</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="legal-footer">
+        <div class="container">
+            <p>&copy; 2025 HustleMap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function goBack() {
+            // If visitor came from our site, use browser back; otherwise go to tickets section
+            if (document.referrer && document.referrer.includes(window.location.origin)) {
+                history.back();
+            } else {
+                location.href = 'index.html#paywall';
+            }
+        }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
